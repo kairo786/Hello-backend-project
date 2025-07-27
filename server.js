@@ -20,8 +20,8 @@ const io = new Server(server, {
   cors: {
     origin: [
       // "http://10.170.249.178:3000", // Allow your IP for frontend
-      // "https://23320e363067.ngrok-free.app",
-      "http://localhost:3000",
+      "https://hello-front-or8v.vercel.app/",
+      // "http://localhost:3000", 
     ],
     methods: ["GET", "POST"],
     credentials: true,
@@ -125,3 +125,4 @@ io.on("connection", (socket) => {
 server.listen(3001, "0.0.0.0", () => {
   console.log("Server running on http://0.0.0.0:3001");
 });
+ 
