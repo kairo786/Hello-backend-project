@@ -26,7 +26,7 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
     credentials: true,
   },
-});
+}); 
 
 
 
@@ -58,6 +58,23 @@ io.on("connection", (socket) => {
     io.emit("user-list", users);
   });
 
+
+  socket.on("sourcetext", ({langcode,message,toid})=>{
+   console.log("msg received ",message); 
+   socket.to(toid).emit("sourcetext",{langcode,message});
+  });
+  socket.on("translatelang-request",(data) =>{
+    socket.to(data).emit("translatelang-request");
+  })
+  socket.on("mic-request-accepted",(toid)=>{
+    socket.to(toid).emit("mic-request-accepted");
+  })
+   socket.on("mic-request-stopped",(toid)=>{
+    socket.to(toid).emit("mic-request-stopped");
+  })
+  socket.on("cancle-mic",(toid)=>{
+    socket.to(toid).emit("cancle-mic");
+  })
   socket.on("end-call",(data)=>{
     socket.emit("end-call");
     socket.to(data).emit("end-call");
