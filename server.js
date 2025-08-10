@@ -75,6 +75,22 @@ io.on("connection", (socket) => {
   socket.on("cancle-mic",(toid)=>{
     socket.to(toid).emit("cancle-mic");
   })
+  socket.on("give-mic",(toid)=>{
+    console.log('give mic receives from toid',toid);
+     socket.to(toid).emit("give-mic");
+  });
+// // Correct backend implementation
+// socket.on("tts-started", (data) => {
+//   console.log('tts started for:', data.toid);
+//   socket.to(data.toid).emit("tts-started", { toid: socket.id }); // Send sender's ID
+//   // socket.to(socket.id).emit("tts-started", { toid: data.toid }); // Send sender's ID
+// });
+
+// socket.on("tts-ended", (data) => {
+//   console.log('tts ended for:', data.toid);
+//   socket.to(data.toid).emit("tts-ended", { toid: socket.id }); // Send sender's ID
+// });
+
   socket.on("end-call",(data)=>{
     socket.emit("end-call");
     socket.to(data).emit("end-call");
