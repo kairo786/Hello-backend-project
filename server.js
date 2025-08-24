@@ -143,6 +143,7 @@ const io = new Server(server, {
       // "http://10.170.249.178:3000", // Allow your IP for frontend
       "https://hello-front-or8v.vercel.app",
       // "http://localhost:3000",
+      "capacitor://localhost"   // capacitor app
     ],
     methods: ["GET", "POST"],
     credentials: true,
